@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Dashboard</title>
+
+    <link rel="stylesheet" href="{% static 'css/startupdashstyle.css' %}">
+</head>
+
+<body>
+
+<div class="main">
+
+    <!-- NAVBAR -->
+
+    <div class="top">
+
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About Us</a>
+        <a href="{% url 'mentors' %}">Mentors</a>
+        <a href="{% url 'startups' %}">Startups</a>
+
+        <a href="{% url 'logout' %}" class="logout-btn">
+            Log Out
+        </a>
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <div class="content">
+
+        <!-- WELCOME SECTION -->
+
+        <div class="welcome-section">
+
+            <h1>
+                Welcome, {{ request.user.username }}! 🎓
+            </h1>
+
+            <p>
+                You are logged in as
+                <strong>Mentor</strong>
+            </p>
+
+            {% if mentor %}
+                <p>
+                    Expertise:
+                    {{ mentor.expertise|default:"Business Growth" }}
+
+                    |
+
+                    Experience:
+                    {{ mentor.experience }} years
+                </p>
+            {% endif %}
+
+        </div>
+
+        <!-- STARTUP SECTION -->
+
+        <div class="dashboard-section">
+
+            <h2>
+                All Startups — Ready for Mentoring
+            </h2>
+
+            {% if startups %}
+
+                <div class="startup-grid">
+
+                    {% for startup in startups %}
+
+                    <div class="startup-card">
+
+                        <!-- LOGO -->
+
+                        <div class="startup-logo-wrapper">
+
+                            {% if startup.logo %}
+                                <img
+                                    src="{{ startup.logo.url }}"
+                                    alt="{{ startup.name }}"
+                                    class="startup-logo"
+                                >
+                            {% else %}
+                                <div class="startup-logo startup-logo-placeholder">
+                                    {{ startup.name|first|upper }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <!-- CONTENT -->
+
+                        <div class="startup-card-body">
+
+                            <h3>
+                                {{ startup.name }}
+                            </h3>
+
+                            <p class="startup-description">
+                                {{ startup.description|truncatewords:20 }}
+                            </p>
+
+                            <div class="stats">
+
+                                <span>
+                                    🏭 {{ startup.industry|default:"General" }}
+                                </span>
+
+                                <span>
+                                    📈 Market: {{ startup.market_potential }}/10
+                                </span>
+
+                                <span>
+                                    📊 Scalability: {{ startup.scalability }}/10
+                                </span>
+
+                                <span>
+                                    🔥 Traction: {{ startup.traction }}/10
+                                </span>
+
+                                <span class="rating">
+                                    ⭐ Rating:
+                                    {{ startup.rating|default:"0.0" }}/10
+                                </span>
+
+                            </div>
+
+                            <!-- BUTTONS -->
+
+                            <div class="button-group">
+
+                                <a
+                                    href="{% url 'startup_profile' startup.id %}"
+                                    class="eval-btn"
+                                >
+                                    View Profile
+                                </a>
+
+                                <a
+                                    href="mailto:{{ startup.user.email }}"
+                                    class="connect-btn"
+                                >
+                                    Connect
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <p class="no-data">
+                    No startups available yet.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!-- templates/requests.html -->
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Investment Requests</h1>
+
+{% for req in requests %}
+<div class="card">
+<p>Investor: {{ req.investor.username }}</p>
+<p>Startup: {{ req.startup.name }}</p>
+<p>Amount: ₹{{ req.amount }}</p>
+<p>Status: {{ req.status }}</p>
+</div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,122 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#000;
+    color:#fff;
+}
+
+/* PAGE */
+.add-page{
+    max-width:1000px;
+    margin:auto;
+    padding:40px;
+}
+
+/* HEAD */
+.page-head{
+    margin-bottom:30px;
+}
+
+.page-head h1{
+    font-size:2.4rem;
+    color:#cff849;
+    margin-bottom:8px;
+}
+
+.page-head p{
+    color:#999;
+}
+
+/* FORM */
+.startup-form{
+    background:#111;
+    border:1px solid #222;
+    border-radius:18px;
+    padding:35px;
+}
+
+/* GROUP */
+.form-group{
+    margin-bottom:22px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:8px;
+    color:#cff849;
+    font-size:15px;
+}
+
+.form-group input,
+.form-group textarea{
+    width:100%;
+    padding:14px 16px;
+    background:#0d0d0d;
+    border:1px solid #333;
+    border-radius:10px;
+    color:#fff;
+    outline:none;
+    transition:.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+    border-color:#cff849;
+}
+
+textarea{
+    resize:vertical;
+}
+
+/* SCORE GRID */
+.score-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+/* BUTTON */
+.submit-btn{
+    width:100%;
+    margin-top:12px;
+    padding:16px;
+    background:#cff849;
+    color:#000;
+    border:none;
+    border-radius:10px;
+    font-weight:700;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.submit-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(207,248,73,.18);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.add-page{
+    padding:20px;
+}
+
+.startup-form{
+    padding:22px;
+}
+
+.score-grid{
+    grid-template-columns:1fr;
+}
+
+.page-head h1{
+    font-size:1.8rem;
+}
+
+}

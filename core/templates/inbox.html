@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inbox{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/inbox.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h1>Inbox</h1>
+
+<div class="grid">
+
+{% for room in chatrooms %}
+<div class="card">
+
+{% for member in room.participants.all %}
+{% if member != user %}
+<h2>{{ member.username }}</h2>
+{% endif %}
+{% endfor %}
+
+<p>Open conversation and continue chatting.</p>
+
+<a href="/chat/{{ room.id }}/" class="btn">Open Chat</a>
+
+</div>
+{% empty %}
+<p class="no-data">No chats available.</p>
+{% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,230 @@
+/* GLOBAL RESET */
+{% load static %}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html ,body{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #000000, #111111);
+    color: #fff;
+}
+
+/* NAVBAR */
+.top{
+    background-color: #000000;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.top a{
+    font-size: 2vw;
+    text-decoration: none;
+    padding: 15px;
+    color: #d6d6d6;
+    transition:0.5s;
+}
+
+.top a:hover{
+    font-size: 3vw;
+    cursor:pointer;
+    color: #cff849;
+}
+
+/* SIGNUP SECTION */
+.signup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 10%;
+    padding: 20px;
+}
+
+.signup h1{
+    color: #cff849;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* SIGNUP CARD GRID */
+.signup-sec{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+}
+
+/* IMAGE / INFO SIDE */
+.signupi{
+    background-image: url("/static/image/Login-img.jpg");
+background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    color: #fff;
+    text-align: center;
+    min-height: 400px;
+}
+
+.signupi h2{
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px #000;
+}
+
+.signupi p{
+    font-size: 1rem;
+    text-shadow: 1px 1px 3px #000;
+}
+
+/* FORM SIDE */
+.signupf{
+    background: #1c1c1c;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.signupf h2{
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #cff849;
+}
+
+/* INPUT FIELDS */
+.input-group{
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-group input{
+    width: 100%;
+    padding: 10px 10px 10px 5px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #cff849;
+    color: #fff;
+    outline: none;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.input-group label{
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    pointer-events: none;
+    transition: 0.3s;
+    color: #d6d6d6;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label{
+    top: -15px;
+    font-size: 0.85rem;
+    color: #cff849;
+}
+
+/* BUTTON */
+button{
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: #cff849;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+button:hover{
+    background: #b6d42b;
+}
+
+/* LOGIN LINK */
+.login-link{
+    text-align: center;
+    margin-top: 15px;
+}
+
+.login-link a{
+    color: #cff849;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link a:hover{
+    text-decoration: underline;
+}
+
+/* ROLE SELECTION */
+.role-selection{
+    margin: 20px 0;
+}
+
+.role-selection p{
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.role-card{
+    display: inline-block;
+    border: 2px solid #cff849;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.role-card input{
+    display: none;
+}
+
+.role-card span{
+    font-weight: bold;
+    color: #fff;
+}
+
+.role-card:hover{
+    background: #cff849;
+    color: #000;
+}
+
+.role-card input:checked + span{
+    background: #cff849;
+    color: #000;
+}
+
+/* ROLE FIELDS HIDDEN INITIALLY */
+.role-fields{
+    display: none;
+    margin-top: 15px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .signup-sec{
+        grid-template-columns: 1fr;
+    }
+
+    .signupi{
+        min-height: 200px;
+    }
+}

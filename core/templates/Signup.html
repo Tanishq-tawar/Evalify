@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static 'css/signupstyle.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="{% static 'js/signup.js' %}" defer></script>
+    <style>
+        
+</style>
+</head>
+<body>
+    <div class="main">
+
+        <!-- NAVBAR -->
+        <div class="top">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}">About Us</a>
+            <a href="{% url 'mentors' %}">Mentors</a>
+            <a href="{% url 'startups' %}">Startups</a>
+            <a href="{% url 'login' %}">Sign In</a>
+            <a href="{% url 'signup' %}">Sign Up</a>
+        </div>
+
+        <!-- SIGNUP SECTION -->
+        <div class="signup">
+            <h1>Create Account</h1>
+
+            <div class="signup-sec">
+
+                <!-- IMAGE / INFO SIDE -->
+                <div class="signupi">
+                    <h2>Join the Innovation Hub</h2>
+                    <p>Connect with top mentors, startups, and investors.</p>
+                </div>
+
+                <!-- SIGNUP FORM -->
+                <div class="signupf">
+    <h2>Sign Up Form</h2>
+    <form method="POST" action="/signup/">
+        {% csrf_token %}
+
+        <!-- Basic Info -->
+        <div class="input-group">
+            <input type="text" name="username" required>
+            <label>Full Name</label>
+        </div>
+        <div class="input-group">
+            <input type="email" name="email" required>
+            <label>Email</label>
+        </div>
+        <div class="input-group">
+            <input type="password" name="password" required>
+            <label>Password</label>
+        </div>
+        <div class="input-group">
+            <input type="password" name="confirm_password" required>
+            <label>Confirm Password</label>
+        </div>
+
+        <!-- ROLE SELECTION -->
+        <div class="role-selection">
+            <p>Select your role:</p>
+            <label class="role-card">
+                <input type="radio" name="role" value="startup" required>
+                <span>Startup Owner</span>
+            </label>
+            <label class="role-card">
+                <input type="radio" name="role" value="mentor">
+                <span>Mentor</span>
+            </label>
+            <label class="role-card">
+                <input type="radio" name="role" value="investor">
+                <span>Investor</span>
+            </label>
+        </div>
+
+        <!-- Role-specific fields -->
+        <div id="startupFields" class="role-fields">
+            <div class="input-group">
+                <input type="text" name="startup_name">
+                <label>Startup Name</label>
+            </div>
+            <div class="input-group">
+                <input type="text" name="industry">
+                <label>Industry</label>
+            </div>
+            <div class="input-group">
+                <input type="text" name="startup_stage">
+                <label>Startup Stage</label>
+            </div>
+        </div>
+
+        <div id="mentorFields" class="role-fields">
+            <div class="input-group">
+                <input type="text" name="expertise">
+                <label>Expertise Area</label>
+            </div>
+            <div class="input-group">
+                <input type="number" name="experience">
+                <label>Years of Experience</label>
+            </div>
+        </div>
+
+        <div id="investorFields" class="role-fields">
+            <div class="input-group">
+                <input type="text" name="investment_type">
+                <label>Investment Type</label>
+            </div>
+            <div class="input-group">
+                <input type="number" name="available_funds">
+                <label>Available Funds ($)</label>
+            </div>
+        </div>
+
+        <button type="submit">Sign Up</button>
+        <p class="login-link">Already have an account? <a href="/login/">Login</a></p>
+    </form>
+
+    {% for message in messages %}
+        <p style="color:red;">{{ message }}</p>
+    {% endfor %}
+</div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JS for dynamic fields -->
+    <script>
+        const roleRadios = document.querySelectorAll('input[name="role"]');
+        const startupFields = document.getElementById('startupFields');
+        const mentorFields = document.getElementById('mentorFields');
+        const investorFields = document.getElementById('investorFields');
+
+        roleRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                // Hide all role fields
+                startupFields.style.display = 'none';
+                mentorFields.style.display = 'none';
+                investorFields.style.display = 'none';
+
+                // Show selected role fields
+                if (radio.value === 'startup') startupFields.style.display = 'block';
+                else if (radio.value === 'mentor') mentorFields.style.display = 'block';
+                else if (radio.value === 'investor') investorFields.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

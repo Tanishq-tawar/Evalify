@@ -1,0 +1,183 @@
+*{
+padding:0;
+margin:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#000;
+color:white;
+}
+
+.profile-page{
+padding:50px;
+display:flex;
+justify-content:center;
+}
+
+.profile-card{
+width:100%;
+max-width:950px;
+background:#111;
+border:1px solid #222;
+padding:40px;
+border-radius:18px;
+box-shadow:0 0 20px rgba(207,248,73,0.05);
+}
+
+.profile-card h1{
+font-size:42px;
+color:#cff849;
+margin-bottom:15px;
+}
+
+.desc{
+color:#aaa;
+font-size:18px;
+margin-bottom:35px;
+line-height:1.6;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-bottom:35px;
+}
+
+.stat-box{
+background:#181818;
+padding:25px;
+border-radius:14px;
+border:1px solid #222;
+transition:.3s;
+}
+
+.stat-box:hover{
+transform:translateY(-5px);
+border-color:#cff849;
+}
+
+.stat-box span{
+color:#888;
+font-size:14px;
+display:block;
+margin-bottom:10px;
+}
+
+.stat-box h3{
+font-size:24px;
+color:white;
+}
+
+.highlight{
+background:#cff849;
+}
+
+.highlight span{
+color:#111;
+}
+
+.highlight h2{
+font-size:34px;
+color:#000;
+}
+
+.btn{
+display:inline-block;
+padding:14px 28px;
+background:#cff849;
+color:#000;
+font-weight:700;
+text-decoration:none;
+border-radius:10px;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+@media(max-width:768px){
+.profile-page{
+padding:20px;
+}
+
+.profile-card{
+padding:25px;
+}
+
+.profile-card h1{
+font-size:30px;
+}
+}
+
+/* NAVBAR CSS */
+
+nav{
+    width:100%;
+    background:#0d0d0d;
+    border-bottom:1px solid #222;
+    padding:18px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+nav h2{
+    color:#cff849;
+    font-size:2rem;
+    font-weight:700;
+    margin:0;
+}
+
+nav ul{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    list-style:none;
+    margin:0;
+    padding:0;
+    flex-wrap:wrap;
+}
+
+nav ul li{
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#d6d6d6;
+    font-size:0.95rem;
+    transition:0.3s;
+    padding:8px 12px;
+    border-radius:6px;
+}
+
+nav ul li a:hover{
+    color:#cff849;
+    background:#1a1a1a;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+        padding:20px;
+    }
+
+    nav ul{
+        justify-content:center;
+    }
+
+    nav h2{
+        font-size:1.6rem;
+    }
+}

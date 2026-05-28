@@ -1,0 +1,166 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#000;
+    color:#fff;
+}
+
+/* PAGE */
+.chat-page{
+    max-width:1000px;
+    margin:auto;
+    padding:35px;
+}
+
+/* HEADER */
+.chat-header{
+    margin-bottom:25px;
+}
+
+.chat-header h1{
+    color:#cff849;
+    font-size:2.2rem;
+    margin-bottom:8px;
+}
+
+.chat-header p{
+    color:#999;
+}
+
+/* CHAT BOX */
+.chat-box{
+    background:#111;
+    border:1px solid #222;
+    border-radius:18px;
+    padding:25px;
+    height:520px;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+/* MESSAGE */
+.message{
+    max-width:70%;
+    padding:14px 18px;
+    border-radius:14px;
+    line-height:1.5;
+}
+
+.message p{
+    margin-bottom:6px;
+}
+
+.message span{
+    font-size:12px;
+    opacity:.7;
+}
+
+/* MY MESSAGE */
+.my-msg{
+    align-self:flex-end;
+    background:#cff849;
+    color:#000;
+}
+
+/* OTHER MESSAGE */
+.other-msg{
+    align-self:flex-start;
+    background:#1c1c1c;
+    color:#fff;
+    border:1px solid #333;
+}
+
+/* FORM */
+.chat-form{
+    margin-top:20px;
+    display:flex;
+    gap:15px;
+}
+
+.chat-form input{
+    flex:1;
+    padding:14px 18px;
+    background:#111;
+    border:1px solid #333;
+    border-radius:10px;
+    color:#fff;
+    outline:none;
+}
+
+.chat-form input:focus{
+    border-color:#cff849;
+}
+
+.chat-form button{
+    padding:14px 28px;
+    border:none;
+    border-radius:10px;
+    background:#cff849;
+    color:#000;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.chat-form button:hover{
+    transform:scale(1.05);
+}
+
+/* EMPTY */
+.empty-chat{
+    color:#777;
+}
+
+/* SCROLLBAR */
+.chat-box::-webkit-scrollbar{
+    width:6px;
+}
+
+.chat-box::-webkit-scrollbar-thumb{
+    background:#cff849;
+    border-radius:10px;
+}
+
+.chat-box::-webkit-scrollbar-track{
+    background:#111;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.chat-page{
+    padding:18px;
+}
+
+.chat-box{
+    height:430px;
+    padding:18px;
+}
+
+.message{
+    max-width:85%;
+}
+
+.chat-form{
+    flex-direction:column;
+}
+
+.chat-form button{
+    width:100%;
+}
+
+}
+.btn-back{
+    display:inline-block;
+    color:#cff849;
+    text-decoration:none;
+    font-size:0.9rem;
+    margin-top:6px;
+}

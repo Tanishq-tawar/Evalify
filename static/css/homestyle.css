@@ -1,0 +1,396 @@
+{% load static %}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #000000, #111111);
+    color: #fff;
+}
+/* Animation */
+@keyframes counter {
+  from {
+    counter-reset: count 0;
+  }
+  to {
+    counter-reset: count 100;
+  }
+}
+
+.main{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    background-color: #000000;
+    grid-template-rows: 10% 90% ;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-areas: "top top " 
+                "left right ";
+}
+
+.top{
+    background-color: #000000;
+    text-align: center;
+    grid-area: top;
+    padding-top: 20px;
+    
+}
+.top a{
+    font-size: 2vw;
+    text-decoration: none;
+    padding: 15px;
+    color: #d6d6d6;
+    transition:0.5s;
+}
+.top a:hover{
+    font-size: 3vw;
+    text-decoration: none;
+    padding: 15px;
+    cursor:pointer;
+}
+
+.top:hover a {
+    color: #cff849;
+}
+
+.left{
+    grid-area: left;
+    display: grid;
+    grid-template-rows: 50% 30% 20% ;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: "eye eye "
+                " des des "
+                "but1 but2";
+}
+.eye{
+    /* text-align: center; */
+    grid-area: eye;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 200%;
+    padding: 10% ;
+    color: #b1e702;
+    
+}
+.des{
+    grid-area: des;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: normal;
+    font-size: large;
+    padding-left: 10% ;
+    padding-top: 15% ;
+    color: #d6d6d6;
+
+}
+
+.but1{
+    text-align: center; 
+    grid-area: but1;
+}
+.but2{
+     text-align: center; 
+    grid-area: but2;
+    
+}
+ .but1 button , .but2 button{
+    width: 60%;
+    height: 30%;
+    background-color: transparent;
+    border: #b1e702 solid 2px;
+    border-radius: 10px;
+    font-size: medium;
+ }
+ .but1 button a , .but2 button a{
+    color: #d6d6d6;
+    text-decoration: none;
+ }
+
+.right{
+    grid-area: right;
+    display: flex;
+    justify-content: flex-end;
+}
+.right div {
+    padding-top: 10%;
+    height: 80%;
+    width: 80%;
+}
+.right img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    margin-right: 0;
+
+}
+.trust{
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2rem;
+}
+.counter{
+    width: 25%;
+    height: 50%;
+    border: 0.5px solid grey;
+    border-radius: 2%;
+    display: block;
+  text-align: center; 
+}
+.number {
+padding-top:2% ;
+  font-size: 2vw;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  
+}
+
+.counter h2{
+    width: 100%;
+    height: 100%;
+    padding-top:2% ;
+    font-weight: bold;
+    
+}
+
+.counter:hover  {
+    background:#cff849;
+    color:black;
+    border: 0.5px solid rgb(0, 0, 0);
+
+
+}
+/* .tag{
+    width: 100%;
+    height: 30%;
+background-color: black;}
+.tag h1 {
+    text-align: center;
+    justify-content: center;
+    font-size: 300%;
+    color: whitesmoke;
+}
+.sec1 {
+    width: 100%;
+    height: 80%;
+    background :linear-gradient(to bottom , black  , #506801) ; 
+    display : flex;
+    grid-template-columns: 20% 20% 20% ;
+    grid-template-rows: 100% ;
+    grid-template-areas: "invst own ment ";
+    align-content: space-evenly;
+} */
+
+.blank {
+    position: relative;
+    width: 100%;
+    height: 90%;
+    grid-area: "blank";
+}
+/* .invest {
+    width: 100%;
+    height: 90%;
+    grid-area: "invst";
+    border: solid 2px red;
+    border-radius: 20px;
+    color: whitesmoke;
+    text-align: center; 
+    padding-top: 5%;
+}
+
+.own {
+    width: 100%;
+    height: 90%;
+    grid-area: "own";
+    border: solid 2px red;
+    border-radius: 20px;
+    color: whitesmoke;
+    text-align: center; 
+    padding-top: 5%;
+}
+.ment {
+    width: 100%;
+    height: 90%;
+    grid-area: "ment";
+    border: solid 2px red;
+    border-radius: 20px; 
+    color: whitesmoke;
+    text-align: center; 
+    padding-top: 5%;  
+} */
+.roles{
+    text-align:center;
+    padding:60px;
+}
+
+.role-cards{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-top:30px;
+}
+
+.card{
+    padding:40px;
+    border:1px solid #333;
+    border-radius:15px;
+    transition:0.3s;
+}
+
+.card:hover{
+    background:#cff849;
+    color:black;
+}
+/* Chatgpt */
+
+
+/* HOW SECTION */
+
+.how{
+    padding: 60px 0;
+    text-align: center;
+}
+
+.how h1{
+    color: #cff849;
+    font-size: 3vw;
+    margin-bottom: 40px;
+}
+
+.steps{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.step{
+    width: 200px;
+    padding: 20px;
+    background-color: #111;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.step h2{
+    color: #cff849;
+}
+
+.step h3{
+    color: white;
+}
+
+.step p{
+    color: #ccc;
+}
+
+.step:hover{
+    transform: scale(1.05);
+}
+
+/* WHY SECTION */
+
+.why{
+    padding: 60px 0;
+    text-align: center;
+}
+
+.why h1{
+    color: #cff849;
+    margin-bottom: 30px;
+}
+
+.why-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+    width: 80%;
+    margin: auto;
+}
+
+.why-card{
+    background-color: #111;
+    padding: 20px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.why-card h2{
+    color: #cff849;
+}
+
+.why-card p{
+    color: #ccc;
+}
+
+.why-card:hover{
+    transform: scale(1.03);
+}
+
+/* CTA */
+
+.cta{
+    padding: 80px 0;
+    text-align: center;
+    background: linear-gradient(#000,#1a1a1a);
+}
+
+.cta h1{
+    color: #cff849;
+}
+
+.cta p{
+    color: #ccc;
+    margin: 20px 0;
+}
+
+.cta-buttons a{
+    margin: 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+}
+
+.btn-primary{
+    background: #cff849;
+    color: black;
+}
+
+.btn-secondary{
+    border: 1px solid #cff849;
+    color: #cff849;
+}
+
+/* FOOTER */
+
+.footer{
+    padding: 20px;
+    text-align: center;
+    color: #aaa;
+    border-top: 1px solid #222;
+}
+/* HERO BUTTONS — replaces button>a nesting */
+.hero-btn {
+    display: inline-block;
+    width: 60%;
+    padding: 12px 0;
+    background-color: transparent;
+    border: #b1e702 solid 2px;
+    border-radius: 10px;
+    font-size: medium;
+    color: #d6d6d6;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s;
+}
+.hero-btn:hover {
+    background-color: #b1e702;
+    color: #000;
+}

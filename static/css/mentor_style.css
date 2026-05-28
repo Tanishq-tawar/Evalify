@@ -1,0 +1,176 @@
+/* ==========================================
+   INVESTOR + MENTOR DASHBOARD IMPROVED CSS
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#000;
+    color:#fff;
+}
+
+/* NAVBAR FIX */
+nav{
+    width:100%;
+    background:#0d0d0d;
+    border-bottom:1px solid #222;
+    padding:18px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+nav h2{
+    color:#cff849;
+    font-size:2rem;
+    font-weight:700;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#d6d6d6;
+    font-size:0.95rem;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#cff849;
+}
+
+/* MAIN CONTAINER */
+.container{
+    width:100%;
+    max-width:1400px;
+    margin:auto;
+    padding:40px;
+}
+
+/* HEADING */
+h1{
+    font-size:3rem;
+    color:#cff849;
+    margin-bottom:35px;
+    font-weight:700;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:28px;
+}
+
+/* CARD */
+.card{
+    background:#111;
+    border:1px solid #222;
+    border-radius:18px;
+    padding:28px;
+    transition:0.35s ease;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#cff849;
+    box-shadow:0 12px 25px rgba(207,248,73,0.08);
+}
+
+/* CARD TITLE */
+.card h2{
+    color:#cff849;
+    font-size:1.4rem;
+    margin-bottom:14px;
+}
+
+/* CARD TEXT */
+.card p{
+    color:#bcbcbc;
+    font-size:0.95rem;
+    line-height:1.6;
+    margin-bottom:12px;
+}
+
+/* BUTTON */
+.btn{
+    display:inline-block;
+    width:100%;
+    text-align:center;
+    margin-top:14px;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #cff849;
+    color:#cff849;
+    text-decoration:none;
+    transition:0.3s;
+    font-weight:500;
+}
+
+.btn:hover{
+    background:#cff849;
+    color:#000;
+    font-weight:700;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+        padding:20px;
+    }
+
+    nav ul{
+        justify-content:center;
+    }
+
+    .container{
+        padding:25px;
+    }
+
+    h1{
+        font-size:2.2rem;
+    }
+}
+
+@media(max-width:600px){
+
+    h1{
+        font-size:1.8rem;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    nav h2{
+        font-size:1.5rem;
+    }
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{
+    width:6px;
+}
+::-webkit-scrollbar-track{
+    background:#000;
+}
+::-webkit-scrollbar-thumb{
+    background:#cff849;
+    border-radius:10px;
+}

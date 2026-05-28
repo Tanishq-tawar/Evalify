@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/loginstyle2.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+.logini{
+    background-image: url("/static/image/Login-img.jpg");
+background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    color: #fff;
+    text-align: center;
+    min-height: 400px;
+}
+</style>
+</head>
+<body>
+    <div class="main">
+
+        <!-- NAVBAR -->
+        <div class="top">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}">About Us</a>
+            <a href="{% url 'mentors' %}">Mentors</a>
+            <a href="{% url 'startups' %}">Startups</a>
+            <a href="{% url 'login' %}">Sign In</a>
+            <a href="{% url 'signup' %}">Sign Up</a>
+        </div>
+
+        <!-- LOGIN SECTION -->
+        <div class="login">
+            <h1>Welcome Back</h1>
+
+            <div class="login-sec">
+
+                <!-- IMAGE / INFO -->
+                <div class="logini">
+                    <h2>Your Gateway to Innovation</h2>
+                    <p>Connect with top mentors and startups.</p>
+                </div>
+
+                <!-- LOGIN FORM -->
+                <div class="loginf">
+                    <h2>Login Form</h2>
+
+                    <!-- Messages (shown above form) -->
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p style="color: red;">{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+
+                    <form method="POST" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input type="text" name="username" required>
+                            <label>Username</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" name="password" required>
+                            <label>Password</label>
+                        </div>
+                        <button type="submit">Login</button>
+                        <p class="signup-link">
+                            Don't have an account? <a href="{% url 'signup' %}">Sign Up</a>
+                        </p>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

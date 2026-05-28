@@ -1,0 +1,233 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ───────── BODY ───────── */
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #000000, #111111);
+    color: #fff;
+}
+
+/* ───────── NAVBAR ───────── */
+
+.top{
+    background-color: #000;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.top a{
+    display: inline-block;
+    font-size: 1.2rem;
+    text-decoration: none;
+    padding: 12px 18px;
+    color: #d6d6d6;
+    transition: 0.3s ease;
+}
+
+.top a:hover{
+    color: #cff849;
+    transform: scale(1.08);
+}
+
+/* ───────── STARTUP SECTION ───────── */
+
+.startp-sec{
+    width: 100%;
+    padding: 50px 5%;
+}
+
+.startp-sec h1{
+    text-align: center;
+    color: #cff849;
+    font-size: 3rem;
+    margin-bottom: 50px;
+}
+
+/* ───────── SINGLE COLUMN LAYOUT ───────── */
+
+.startup-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    width: 100%;
+}
+
+/* ───────── STARTUP CARD ───────── */
+
+.startup-card{
+    width: 90%;
+    min-height: 320px;
+
+    background: #181818;
+
+    border-radius: 20px;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: 30% 70%;
+
+    transition: 0.3s ease;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.startup-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(207,248,73,0.25);
+}
+
+/* ───────── STARTUP IMAGE ───────── */
+
+.simg{
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: 0.4s ease;
+}
+
+/* IMAGE HOVER */
+
+.startup-card:hover .simg{
+    transform: scale(1.05);
+}
+
+/* ───────── PLACEHOLDER IMAGE ───────── */
+
+.simg-placeholder{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+
+    color: #cff849;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+/* ───────── CONTENT AREA ───────── */
+
+.overlay{
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* TITLE */
+
+.overlay h1{
+    color: #cff849;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+/* TEXT */
+
+.overlay p{
+    color: #d6d6d6;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+/* ───────── CONNECT BUTTON ───────── */
+
+.connect-btn{
+    width: fit-content;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 18px;
+    padding: 12px 28px;
+
+    background: linear-gradient(135deg, #cff849, #a8d000);
+
+    color: #000 !important;
+    text-decoration: none !important;
+
+    font-weight: 700;
+    font-size: 0.95rem;
+
+    border-radius: 30px;
+    border: none;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
+    box-shadow: 0 4px 15px rgba(207,248,73,0.35);
+}
+
+.connect-btn:hover{
+    transform: translateY(-2px) scale(1.04);
+
+    background: linear-gradient(135deg, #d8ff60, #cff849);
+
+    box-shadow: 0 8px 24px rgba(207,248,73,0.5);
+}
+
+/* LOGIN BUTTON */
+
+.connect-btn--login{
+    background: transparent;
+    color: #cff849 !important;
+    border: 2px solid #cff849;
+    box-shadow: none;
+}
+
+.connect-btn--login:hover{
+    background: #cff849;
+    color: #000 !important;
+}
+
+/* ───────── RESPONSIVE ───────── */
+
+@media(max-width: 900px){
+
+    .startup-card{
+        grid-template-columns: 1fr;
+    }
+
+    .simg{
+        height: 260px;
+    }
+
+    .overlay{
+        padding: 20px;
+    }
+
+    .overlay h1{
+        font-size: 1.7rem;
+    }
+
+    .overlay p{
+        font-size: 0.95rem;
+    }
+
+    .top a{
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    .startp-sec h1{
+        font-size: 2.2rem;
+    }
+}

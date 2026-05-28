@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connections — StartupHub</title>
+    <link rel="stylesheet" href="{% static 'css/connections.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background: #000; color: #fff; min-height: 100vh; }
+
+        /* NAVBAR */
+        .top { background: #0d0d0d; border-bottom: 1px solid #222; padding: 18px 40px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; }
+        .top a { color: #d6d6d6; text-decoration: none; padding: 8px 14px; border-radius: 6px; font-size: 0.95rem; transition: 0.3s; }
+        .top a:hover { color: #cff849; background: #1a1a1a; }
+        .top a.logout-btn { color: #ff4d4d; border: 1px solid #ff4d4d; }
+        .top a.logout-btn:hover { background: #ff4d4d; color: #000; }
+
+        /* PAGE */
+        .page { max-width: 1100px; margin: auto; padding: 40px 25px; }
+        .page-title { color: #cff849; font-size: 2.2rem; margin-bottom: 10px; }
+        .page-subtitle { color: #888; margin-bottom: 40px; }
+
+        /* SECTION */
+        .section { margin-bottom: 50px; }
+        .section-title { font-size: 1.2rem; font-weight: 600; color: #cff849; border-left: 4px solid #cff849; padding-left: 12px; margin-bottom: 20px; }
+
+        /* PENDING CARDS */
+        .pending-list { display: flex; flex-direction: column; gap: 14px; }
+        .pending-card { background: #111; border: 1px solid #333; border-radius: 12px; padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+        .pending-card .name { font-weight: 600; font-size: 1.05rem; }
+        .pending-card .role-badge { background: #1a1a1a; border: 1px solid #444; border-radius: 20px; padding: 4px 12px; font-size: 0.8rem; color: #aaa; margin-left: 8px; }
+        .pending-card .actions { display: flex; gap: 10px; }
+        .btn-accept { padding: 8px 20px; border-radius: 8px; background: #cff849; color: #000; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .btn-accept:hover { background: #b8e000; }
+        .btn-reject { padding: 8px 20px; border-radius: 8px; border: 1px solid #ff4d4d; color: #ff4d4d; font-weight: 600; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .btn-reject:hover { background: #ff4d4d; color: #000; }
+
+        /* ACCEPTED GRID */
+        .conn-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+        .conn-card { background: #111; border: 1px solid #222; border-radius: 14px; padding: 22px; text-align: center; transition: 0.3s; }
+        .conn-card:hover { border-color: #cff849; transform: translateY(-4px); }
+        .conn-avatar { width: 60px; height: 60px; border-radius: 50%; background: #cff849; color: #000; font-size: 1.6rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
+        .conn-name { font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; }
+        .conn-role { color: #888; font-size: 0.85rem; margin-bottom: 16px; text-transform: capitalize; }
+        .btn-msg { display: block; padding: 10px; background: transparent; border: 1px solid #cff849; color: #cff849; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.3s; }
+        .btn-msg:hover { background: #cff849; color: #000; }
+
+        .empty-note { color: #555; font-size: 0.95rem; padding: 20px 0; }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="top">
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'about' %}">About Us</a>
+    <a href="{% url 'mentors' %}">Mentors</a>
+    <a href="{% url 'startups' %}">Startups</a>
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+    <a href="{% url 'inbox' %}">Inbox</a>
+    <a href="{% url 'logout' %}" class="logout-btn">Log Out</a>
+</div>
+
+<div class="page">
+    <h1 class="page-title">🤝 Connections</h1>
+    <p class="page-subtitle">Manage your network — accept requests and message connections</p>
+
+    <!-- PENDING REQUESTS -->
+    <div class="section">
+        <div class="section-title">Pending Requests ({{ pending|length }})</div>
+        <div class="pending-list">
+            {% for c in pending %}
+            <div class="pending-card">
+                <div>
+                    <span class="name">{{ c.sender.username }}</span>
+                    <span class="role-badge">{{ c.sender.role }}</span>
+                    <span style="color:#888;font-size:0.85rem;margin-left:8px;">wants to connect with you</span>
+                </div>
+                <div class="actions">
+                    <a href="{% url 'respond_connection' c.id 'accept' %}" class="btn-accept">✓ Accept</a>
+                    <a href="{% url 'respond_connection' c.id 'reject' %}" class="btn-reject">✕ Reject</a>
+                </div>
+            </div>
+            {% empty %}
+            <p class="empty-note">No pending requests right now.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- ACCEPTED CONNECTIONS -->
+    <div class="section">
+        <div class="section-title">Your Network ({{ accepted|length }})</div>
+        <div class="conn-grid">
+            {% for conn in accepted %}
+            <div class="conn-card">
+                {% if conn.sender == request.user %}
+                    <div class="conn-avatar">{{ conn.receiver.username|first|upper }}</div>
+                    <div class="conn-name">{{ conn.receiver.username }}</div>
+                    <div class="conn-role">{{ conn.receiver.role }}</div>
+                    <a href="{% url 'start_chat' conn.receiver.id %}" class="btn-msg">💬 Message</a>
+                {% else %}
+                    <div class="conn-avatar">{{ conn.sender.username|first|upper }}</div>
+                    <div class="conn-name">{{ conn.sender.username }}</div>
+                    <div class="conn-role">{{ conn.sender.role }}</div>
+                    <a href="{% url 'start_chat' conn.sender.id %}" class="btn-msg">💬 Message</a>
+                {% endif %}
+            </div>
+            {% empty %}
+            <p class="empty-note">No connections yet. Connect with mentors, investors, and startups!</p>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

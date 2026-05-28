@@ -1,0 +1,17 @@
+<!-- templates/chat.html -->
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Chat Room</h1>
+
+<div class="card" style="height:400px;overflow:auto;">
+<p><b>Investor:</b> Interested in your startup.</p>
+<p><b>Founder:</b> Let's discuss terms.</p>
+</div>
+
+<form>
+<input type="text" placeholder="Type message">
+<button class="btn">Send</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+<!-- templates/feedback.html -->
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Give Feedback</h1>
+
+<form method="POST">
+{% csrf_token %}
+<textarea name="comment" rows="6" placeholder="Write feedback"></textarea>
+<button class="btn">Submit</button>
+</form>
+
+{% endblock %}

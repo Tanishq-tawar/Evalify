@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/startupdashstyle.css' %}">
+</head>
+<body>
+
+<div class="main">
+
+    <!-- NAVBAR -->
+    <div class="top">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About Us</a>
+        <a href="{% url 'mentors' %}">Mentors</a>
+        <a href="{% url 'startups' %}">Startups</a>
+        <a href="{% url 'logout' %}" class="logout-btn">Log Out</a>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <div class="welcome-section">
+            <h1>Welcome, {{ request.user.username }}! 💼</h1>
+            <p>You are logged in as <strong>Investor</strong></p>
+            {% if investor %}
+                <p>Investment Range: {{ investor.investment_range }} | Focus: {{ investor.focus_areas|default:"All sectors" }}</p>
+            {% endif %}
+
+            <!-- ── PHOTO UPLOAD FORM ── -->
+            <form method="POST" action="{% url 'update_investor_photo' %}" enctype="multipart/form-data" style="margin-top:22px;">
+                {% csrf_token %}
+
+                <!-- Current photo preview -->
+                {% if investor.photo %}
+                    <img src="{{ investor.photo.url }}"
+                         alt="Your photo"
+                         style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid #cff849;display:block;margin-bottom:14px;">
+                {% else %}
+                    <div style="width:90px;height:90px;border-radius:50%;background:#1a1a1a;border:3px solid #333;display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+                        <span style="font-size:2rem;">👤</span>
+                    </div>
+                {% endif %}
+
+                <label style="color:#d6d6d6;font-size:0.88rem;display:block;margin-bottom:8px;">
+                    Update Profile Photo:
+                </label>
+                <input type="file" name="photo" accept="image/*"
+                       style="color:#d6d6d6;margin-bottom:12px;font-size:0.88rem;">
+                <br>
+                <button type="submit"
+                        style="padding:10px 24px;background:#cff849;color:#000;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.9rem;transition:0.3s;"
+                        onmouseover="this.style.background='#b8e000'"
+                        onmouseout="this.style.background='#cff849'">
+                    📸 Upload Photo
+                </button>
+            </form>
+        </div>
+
+        <div class="dashboard-section">
+            <h2>Startups — Investment Opportunities</h2>
+            {% if startups %}
+                <div class="startup-grid">
+                    {% for startup in startups %}
+                    <div class="startup-card">
+                        <h3>{{ startup.name }}</h3>
+                        <p>{{ startup.description|truncatewords:20 }}</p>
+                        <div class="stats">
+                            <span>🏭 {{ startup.industry|default:"General" }}</span>
+                            <span>📈 Market: {{ startup.market_potential }}/10</span>
+                            <span>📊 Scalability: {{ startup.scalability }}/10</span>
+                            <span>🔥 Traction: {{ startup.traction }}/10</span>
+                            <span>⭐ Rating: {{ startup.rating }}/10</span>
+                        </div>
+                        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
+                            <a href="{% url 'startup_profile' startup.id %}" class="eval-btn">View Profile</a>
+                            <a href="mailto:{{ startup.user.email }}" class="eval-btn" style="background:#22c55e;">Connect</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-data">No startups available yet.</p>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

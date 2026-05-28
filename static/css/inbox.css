@@ -1,0 +1,142 @@
+*{
+    box-sizing:border-box;
+}
+body{
+    background:#000;
+    color:#fff;
+    margin:0;
+    font-family:Poppins,sans-serif;
+    overflow-x:hidden;
+    width:100%;
+}
+
+/* NAVBAR */
+nav{
+    width:100%;
+    max-width:100%;
+    background:#0d0d0d;
+    border-bottom:1px solid #222;
+    padding:18px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+nav h2{
+    color:#cff849;
+    font-size:2rem;
+    margin:0;
+}
+
+nav ul{
+    display:flex;
+    gap:18px;
+    list-style:none;
+    padding:0;
+    margin:0;
+    flex-wrap:wrap;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#d6d6d6;
+    padding:8px 12px;
+    border-radius:6px;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#cff849;
+    background:#1a1a1a;
+}
+
+/* PAGE */
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:40px;
+     width:100%;
+
+}
+
+h1{
+    color:#cff849;
+    font-size:3rem;
+    margin-bottom:35px;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+    width: 100%;
+}
+
+/* CARD */
+.card{
+    background:#111;
+    border:1px solid #222;
+    padding:25px;
+    border-radius:16px;
+    transition:0.3s;
+}
+
+.card:hover{
+    border-color:#cff849;
+    transform:translateY(-5px);
+}
+
+.card h2{
+    color:#cff849;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#ccc;
+    margin-bottom:18px;
+    line-height:1.5;
+}
+
+/* BUTTON */
+.btn{
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    color:#cff849;
+    border:1px solid #cff849;
+    padding:12px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#cff849;
+    color:#000;
+}
+
+/* EMPTY */
+.no-data{
+    color:#777;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+nav{
+    flex-direction:column;
+    gap:15px;
+    padding:20px;
+}
+
+.container{
+    padding:25px;
+}
+
+h1{
+    font-size:2.2rem;
+}
+}

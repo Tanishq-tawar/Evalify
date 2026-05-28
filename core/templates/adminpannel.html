@@ -1,0 +1,24 @@
+<!-- templates/adminpanel.html -->
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Admin Panel</h1>
+
+<div class="grid">
+<div class="card">
+<h2>Total Startups</h2>
+<p>{{ total_startups }}</p>
+</div>
+
+<div class="card">
+<h2>Total Investors</h2>
+<p>{{ total_investors }}</p>
+</div>
+
+<div class="card">
+<h2>Total Mentors</h2>
+<p>{{ total_mentors }}</p>
+</div>
+</div>
+
+{% endblock %}

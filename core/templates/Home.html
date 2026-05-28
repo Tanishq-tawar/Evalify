@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StartupHub</title>
+    <link rel="stylesheet" href="{% static 'css/homestyle.css' %}">
+    <script src="{% static 'js/home.js' %}" defer></script>
+</head>
+<body>
+
+<div class="main">
+
+    <!-- Dynamic Navbar -->
+    <div class="top">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About Us</a>
+        <a href="{% url 'mentors' %}">Mentors</a>
+        <a href="{% url 'startups' %}">Startups</a>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Sign In</a>
+            <a href="{% url 'signup' %}">Sign Up</a>
+        {% endif %}
+    </div>
+
+    <!-- Hero Section -->
+    <div class="left">
+        <div class="eye">
+            <h1>
+                Know your worth.<br>
+                Make smarter decisions.<br>
+                Grow with confidence.
+            </h1>
+        </div>
+
+        <div class="des">
+            <h3>Fast, accurate startup valuations powered by real market insights.</h3>
+        </div>
+
+        <div class="but1">
+            {% if user.is_authenticated %}
+                <a href="{% url 'dashboard' %}" class="hero-btn">GO DASHBOARD</a>
+            {% else %}
+                <a href="{% url 'signup' %}" class="hero-btn">GET STARTED</a>
+            {% endif %}
+        </div>
+
+        <div class="but2">
+            <a href="tel:+918989998292" class="hero-btn">CALL</a>
+        </div>
+    </div>
+
+    <div class="right">
+        <img src="{% static 'image/heroimage.png' %}" alt="Hero Image">
+    </div>
+
+</div>
+
+<!-- Counter Section -->
+<div class="trust">
+
+    <div class="counter">
+        <span id="count1" class="number">{{ total_startups }}</span>
+        <h2>Startups Evaluated</h2>
+    </div>
+
+    <div class="counter">
+        <span id="count2" class="number">{{ total_mentors }}</span>
+        <h2>Verified Mentors</h2>
+    </div>
+
+    <div class="counter">
+        <span id="count3" class="number">{{ total_investors }}</span>
+        <h2>Investors</h2>
+    </div>
+
+</div>
+
+<!-- Roles -->
+<section class="roles">
+    <h1>Who Are You?</h1>
+
+    <div class="role-cards">
+
+        <div class="card">
+            <h2>Startup Owner</h2>
+            <p>Raise funds and grow faster.</p>
+        </div>
+
+        <div class="card">
+            <h2>Investor</h2>
+            <p>Discover promising startups.</p>
+        </div>
+
+        <div class="card">
+            <h2>Mentor</h2>
+            <p>Guide future entrepreneurs.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- How It Works -->
+<div class="how">
+    <h1>How It Works</h1>
+
+    <div class="steps">
+
+        <div class="step">
+            <h2>01</h2>
+            <h3>Register</h3>
+            <p>Create your free account.</p>
+        </div>
+
+        <div class="step">
+            <h2>02</h2>
+            <h3>Submit Details</h3>
+            <p>Add startup or investor profile.</p>
+        </div>
+
+        <div class="step">
+            <h2>03</h2>
+            <h3>Evaluation</h3>
+            <p>Smart ratings and visibility.</p>
+        </div>
+
+        <div class="step">
+            <h2>04</h2>
+            <h3>Connect</h3>
+            <p>Meet mentors and investors.</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- Why Choose -->
+<div class="why">
+    <h1>Why Choose Us</h1>
+
+    <div class="why-container">
+
+        <div class="why-card">
+            <h2>✔ Transparent Evaluation</h2>
+            <p>Fair startup scoring system.</p>
+        </div>
+
+        <div class="why-card">
+            <h2>✔ Data Insights</h2>
+            <p>Better decisions with analytics.</p>
+        </div>
+
+        <div class="why-card">
+            <h2>✔ Verified Profiles</h2>
+            <p>Trusted startups & mentors.</p>
+        </div>
+
+        <div class="why-card">
+            <h2>✔ Smart Matching</h2>
+            <p>Right people, right opportunities.</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- Top Startups -->
+<div class="why">
+    <h1>Top Rated Startups</h1>
+
+    <div class="why-container">
+
+        {% for startup in top_startups %}
+        <div class="why-card">
+            <h2>{{ startup.name }}</h2>
+            <p>{{ startup.description|truncatewords:15 }}</p>
+            <p>⭐ Rating: {{ startup.rating }}/10</p>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+    <h1>Ready to Grow Your Startup?</h1>
+    <p>Join StartupHub and build your future.</p>
+
+    <div class="cta-buttons">
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'dashboard' %}" class="btn-primary">Go Dashboard</a>
+        {% else %}
+            <a href="{% url 'signup' %}" class="btn-primary">Get Started</a>
+            <a href="{% url 'login' %}" class="btn-secondary">Login</a>
+        {% endif %}
+
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>© 2026 StartupHub | All Rights Reserved</p>
+</div>
+
+</body>
+</html>

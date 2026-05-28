@@ -1,0 +1,533 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html ,body{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #000000, #111111);
+    color: #fff;
+}
+
+.top{
+    background-color: #000000;
+    text-align: center;
+    grid-area: top;
+    padding-top: 20px;
+
+}
+.top a{
+    font-size: 2vw;
+    text-decoration: none;
+    padding: 15px;
+    color: #d6d6d6;
+    transition:0.5s;
+}
+.top a:hover{
+    font-size: 3vw;
+    text-decoration: none;
+    padding: 15px;
+    cursor:pointer;
+}
+
+.top:hover .top a{
+    color: #cff849;
+}
+
+.hero{
+    margin-top: 10%;
+    width: 100%;
+    height: 60%;
+    display: grid;
+    background-color: #000000;
+    grid-template-rows: 100%;
+    grid-template-columns: 40% 58%;
+    grid-template-areas: "left right";
+}
+
+#hero2{
+    margin-top: 10%;
+    width: 100%;
+    height: 60%;
+    display: grid;
+    background-color: #000000;
+    grid-template-rows: 100%;
+    grid-template-columns: 58% 40%;
+    grid-template-areas: "right left";
+}
+
+.left{
+    grid-area: left;
+    background-image: url('/static/image/mission.jpg');
+    background-position: center;
+    background-size: cover;
+    z-index: 1;
+}
+.left:hover{
+    overflow: hidden;
+    border-radius: 2%;
+    transform: scale(1.02);
+    box-shadow: 10px 10px 10px #cff84981;
+}
+
+.right{
+    margin: 5%;
+    border: solid #2a2a2a 1px;
+    background-color: #111111;
+    grid-area: right;
+    display: grid;
+    grid-template-rows: 30% 70%;
+    grid-template-columns: 100%;
+    grid-template-areas: "miss"
+                         "cont";
+    transition: all 0.5s ease;
+    z-index: 0;
+}
+.right:hover{
+    overflow: hidden;
+    border-color: #cff849;
+    border-radius: 2%;
+    transform: scale(1.02);
+}
+
+.miss{
+    grid-area: miss;
+    padding-top: 5%;
+    color: #cff849;
+    font-size: x-large;
+    text-align: center;
+}
+
+.cont{
+    grid-area: cont;
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: justify;
+    font-size: larger;
+    color: white;
+}
+
+.third{
+    margin-top: 10%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: #000000;
+}
+
+.work{
+    margin-top: 10%;
+    width: 30%;
+    height: 60%;
+    background-color: #000000;
+    overflow: hidden;
+    z-index: 0;
+    transition: 1s ease;
+}
+
+.card1{
+    width: 100%;
+    height: 100%;
+}
+
+.work:hover{
+    margin-top: 10%;
+    width: 100%;
+    height: 50%;
+    display: grid;
+    background-color: #000000;
+    grid-template-rows: 100%;
+    grid-template-columns: 25% 40% 35% 35% 35%;
+    grid-template-areas: "card1 card2 card3 card4 card5";
+    overflow: visible;
+    z-index: 1;
+}
+
+#miss1{
+    height: 100%;
+    align-content: center;
+    color: whitesmoke;
+    font-size: x-large;
+    text-align: center;
+    border: double #cff849 10px;
+    border-radius: 5%;
+    background-color: #000000;
+    margin-right: 10%;
+}
+
+.card1{
+    height: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+    grid-area: card1;
+    background-color: #111111;
+    border-radius: 15px;
+    border: 1px solid #2a2a2a;
+    align-content: center;
+}
+
+.card2{
+    margin-left: 18%;
+    grid-area: card2;
+    background-color: #111111;
+    border-radius: 15px;
+    border: 1px solid #2a2a2a;
+    display: grid;
+    grid-template-rows: 20% 80%;
+    grid-template-columns: 100%;
+    grid-template-areas: "thirdh"
+                         "thirdc";
+}
+
+.card3{
+    margin-left: 3%;
+    grid-area: card3;
+    background-color: #111111;
+    border-radius: 15px;
+    border: 1px solid #2a2a2a;
+    display: grid;
+    grid-template-rows: 20% 80%;
+    grid-template-columns: 100%;
+    grid-template-areas: "thirdh"
+                         "thirdc";
+}
+
+.card4{
+    margin-left: 3%;
+    grid-area: card4;
+    background-color: #111111;
+    border-radius: 15px;
+    border: 1px solid #2a2a2a;
+    display: grid;
+    grid-template-rows: 20% 80%;
+    grid-template-columns: 100%;
+    grid-template-areas: "thirdh"
+                         "thirdc";
+}
+
+.card5{
+    margin-left: 3%;
+    grid-area: card5;
+    background-color: #111111;
+    border-radius: 15px;
+    border: 1px solid #2a2a2a;
+    display: grid;
+    grid-template-rows: 20% 80%;
+    grid-template-columns: 100%;
+    grid-template-areas: "thirdh"
+                         "thirdc";
+}
+
+.wi{
+    margin-top: 10%;
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 70%;
+    height: 60%;
+    background-image: url('../image/Building.jpg');
+    background-size: cover;
+    z-index: 0;
+    transition: 0.5s ease;
+}
+
+.wi:hover{
+    overflow: hidden;
+    border-radius: 2%;
+    transform: scale(1.02);
+    box-shadow: 10px 10px 10px #cff849;
+}
+
+.work:hover ~.wi{
+    filter: blur(100px);
+}
+
+.thirdh{
+    color: #cff849;
+    font-size: large;
+    text-align: center;
+    align-content: center;
+}
+
+.thirdc{
+    color: #ffffff;
+    font-size: medium;
+    text-align: center;
+    align-content: center;
+}
+
+.how{
+    width: 100%;
+    padding: 60px 0;
+    background-color: #000000;
+    text-align: center;
+}
+
+.how h1{
+    color: #cff849;
+    font-size: 3vw;
+    margin-bottom: 50px;
+}
+
+.steps{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.step{
+    flex: 1;
+    min-width: 220px;
+    padding: 30px;
+    background-color: #111111;
+    border-radius: 15px;
+    border: 1px solid #2a2a2a;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.step h2{
+    color: #cff849;
+    font-size: 2.5vw;
+    margin-bottom: 10px;
+}
+
+.step h3{
+    color: white;
+    font-size: 1.5vw;
+    margin-bottom: 15px;
+}
+
+.step p{
+    color: #cfcfcf;
+    font-size: 1vw;
+}
+
+.step:hover{
+    transform: translateY(-10px) scale(1.05);
+    border-color: #cff849;
+    box-shadow: 0 0 20px rgba(207, 248, 73, 0.3);
+}
+
+@media (max-width: 768px){
+    .steps{ flex-direction: column; }
+    .step h2{ font-size: 6vw; }
+    .step h3{ font-size: 4vw; }
+    .step p{ font-size: 3vw; }
+}
+
+.founder{
+    width: 100%;
+    padding: 60px 0;
+    background-color: #000000;
+    text-align: center;
+}
+
+.founder h1{
+    color: #cff849;
+    font-size: 3vw;
+    margin-bottom: 50px;
+}
+
+.founder-card{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background-color: #111111;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #2a2a2a;
+    transition: 0.4s ease;
+}
+
+.founder-img img{
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.founder-content{ text-align: left; }
+
+.founder-content h2{
+    color: #ffffff;
+    font-size: 2vw;
+    margin-bottom: 10px;
+}
+
+.founder-content h3{
+    color: #cff849;
+    font-size: 1.2vw;
+    margin-bottom: 20px;
+}
+
+.founder-content p{
+    color: #cfcfcf;
+    font-size: 1vw;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.founder-card:hover{
+    transform: scale(1.02);
+    border-color: #cff849;
+    box-shadow: 0 0 25px rgba(207, 248, 73, 0.3);
+}
+
+@media (max-width: 768px){
+    .founder-card{ flex-direction: column; text-align: center; }
+    .founder-img img{ width: 90%; height: auto; }
+    .founder-content{ text-align: center; }
+    .founder-content h2{ font-size: 5vw; }
+    .founder-content h3{ font-size: 4vw; }
+    .founder-content p{ font-size: 3vw; }
+}
+
+.connect{
+    padding: 10px 20px;
+    border: none;
+    background-color: #cff849;
+    color: black;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 1%;
+}
+.connect a{ color: black; text-decoration: none; }
+.connect:hover{ background-color: white; }
+
+.why{
+    width: 100%;
+    padding: 60px 0;
+    background-color: #000000;
+    text-align: center;
+}
+
+.why h1{
+    color: #cff849;
+    font-size: 3vw;
+    margin-bottom: 50px;
+}
+
+.why-container{
+    width: 85%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.why-card{
+    background-color: #111111;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #2a2a2a;
+    transition: all 0.4s ease;
+    text-align: left;
+}
+
+.why-card h2{
+    color: #cff849;
+    font-size: 1.5vw;
+    margin-bottom: 10px;
+}
+
+.why-card p{
+    color: #cfcfcf;
+    font-size: 1vw;
+    line-height: 1.6;
+}
+
+.why-card:hover{
+    transform: translateY(-8px) scale(1.02);
+    border-color: #cff849;
+    box-shadow: 0 0 20px rgba(207, 248, 73, 0.3);
+}
+
+@media (max-width: 768px){
+    .why-container{ grid-template-columns: 1fr; }
+    .why-card h2{ font-size: 5vw; }
+    .why-card p{ font-size: 3vw; }
+}
+
+.cta{
+    margin-top: 10%;
+    width: 100%;
+    padding: 80px 0;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    text-align: center;
+    border-top: 1px solid #2a2a2a;
+}
+
+.cta h1{
+    color: #cff849;
+    font-size: 3vw;
+    margin-bottom: 20px;
+}
+
+.cta p{
+    color: #cfcfcf;
+    font-size: 1.2vw;
+    margin-bottom: 40px;
+}
+
+.cta-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-primary{
+    padding: 12px 25px;
+    background-color: #cff849;
+    color: black;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1vw;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.btn-secondary{
+    padding: 12px 25px;
+    border: 1px solid #cff849;
+    color: #cff849;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1vw;
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover{
+    background-color: white;
+
+}
+
+.btn-secondary:hover{
+    background-color: #cff849;
+    color: black;
+
+}
+
+@media (max-width: 768px){
+    .cta h1{ font-size: 6vw; }
+    .cta p{ font-size: 3.5vw; }
+    .btn-primary, .btn-secondary{ font-size: 3vw; padding: 10px 20px; }
+}
+
+.connect a:hover,
+.btn-primary:hover,
+.btn-secondary:hover {
+    font-size: inherit !important;
+    padding: inherit !important;
+}

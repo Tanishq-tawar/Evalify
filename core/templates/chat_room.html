@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Chat with {{ other_user.username }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/chat.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="chat-page">
+
+    <div class="chat-header">
+        <h1>💬 Chat with {{ other_user.username }}</h1>
+        <a href="{% url 'inbox' %}" class="btn-back">← Back to Inbox</a>
+    </div>
+
+    <div class="chat-box" id="chatBox">
+        {% for msg in messages %}
+            <div class="message {% if msg.sender == request.user %}my-msg{% else %}other-msg{% endif %}">
+                <p>{{ msg.content }}</p>
+                <span>{{ msg.sender.username }} · {{ msg.timestamp|time:"H:i" }}</span>
+            </div>
+        {% empty %}
+            <p class="empty-chat" id="emptyNote">No messages yet. Say hello!</p>
+        {% endfor %}
+    </div>
+
+    <div class="chat-form">
+        <input type="text" id="msgInput" placeholder="Type your message..." autocomplete="off">
+        <button id="sendBtn">Send</button>
+    </div>
+
+</div>
+
+<script>
+const roomId = {{ chatroom.id }};
+const currentUser = "{{ request.user.username }}";
+let lastId = {{ messages.last.id|default:0 }};
+
+function appendMsg(msg) {
+    const box = document.getElementById('chatBox');
+    const empty = document.getElementById('emptyNote');
+    if (empty) empty.remove();
+    const div = document.createElement('div');
+    div.className = 'message ' + (msg.sender === currentUser ? 'my-msg' : 'other-msg');
+    div.innerHTML = `<p>${msg.content}</p><span>${msg.sender} · ${msg.timestamp}</span>`;
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const box = document.getElementById('chatBox');
+    box.scrollTop = box.scrollHeight;
+});
+
+document.getElementById('sendBtn').addEventListener('click', sendMsg);
+document.getElementById('msgInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') sendMsg();
+});
+
+function getCookie(name) {
+    let v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return v ? v[2] : null;
+}
+
+function sendMsg() {
+    const input = document.getElementById('msgInput');
+    const content = input.value.trim();
+    if (!content) return;
+    input.value = '';
+
+    fetch(`/chat/${roomId}/send/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': getCookie('csrftoken'),
+        },
+        body: 'content=' + encodeURIComponent(content),
+    })
+    .then(r => r.json())
+    .then(msg => {
+        appendMsg(msg);
+        lastId = msg.id;
+    });
+}
+
+// Poll for new messages every 3s
+setInterval(() => {
+    fetch(`/chat/${roomId}/messages/?after=${lastId}`)
+    .then(r => r.json())
+    .then(data => {
+        data.messages.forEach(msg => {
+            if (msg.sender !== currentUser) {
+                appendMsg(msg);
+                lastId = msg.id;
+            }
+        });
+    });
+}, 3000);
+</script>
+{% endblock %}
